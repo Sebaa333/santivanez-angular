@@ -4,5 +4,10 @@
         Crear usuario
     </button> 
 </div>
+<h2 appResaltado = "cyan">Alumnos:</h2>
 
-<app-users-table [dataSource]="users"></app-users-table>
+
+<p *appRepetir="5">
+    <span appResaltado = "cyan">Esta es una prueba de la directiva custom</span> 
+</p>
+    <app-users-table [dataSource]="users"></app-users-table>
