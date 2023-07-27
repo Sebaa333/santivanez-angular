@@ -7,7 +7,11 @@
 <h2 appResaltado = "cyan">Alumnos:</h2>
 
 
-<p *appRepetir="5">
+<p >
     <span appResaltado = "cyan">Esta es una prueba de la directiva custom</span> 
 </p>
-    <app-users-table [dataSource]="users"></app-users-table>
+    <app-users-table
+     [dataSource]="users"
+    (deleteUser)="onDeleteUser($event)"
+    (editUser)="onEditUser($event)"
+    ></app-users-table>

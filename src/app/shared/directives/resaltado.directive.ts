@@ -10,7 +10,6 @@ export class ResaltadoDirective implements OnChanges {
   appResaltado ='yellow'
 
   constructor(private elementRef: ElementRef, private renderer2: Renderer2) { 
-    console.log(this.elementRef)
 
   }
 

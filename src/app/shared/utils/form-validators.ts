@@ -16,6 +16,6 @@ export function noHomeroValidator(): ValidatorFn{
       }
 
 
-      return null // NULL SERIA SI ES CASO EL VALIDO COMO DECIR QUE NO HAY ERROR
+      return null 
     }
   }

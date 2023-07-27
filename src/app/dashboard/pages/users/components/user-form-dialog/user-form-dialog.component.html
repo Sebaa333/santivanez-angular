@@ -1,27 +1,15 @@
 <h1 mat-dialog-title>Crear usuario</h1>
 <div mat-dialog-content>
     <form  [formGroup]="userForm" class="grid"  >
-
-        <!-- CAMPO DE NOMBRE -->
         <div class="col-6 field">
         <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Nombre</mat-label>
                 <input formControlName="name"  matInput type="text" name="name">
-                <!-- ERRORES -->
-
                 <mat-error *ngFor="let error of nameControl.errors | keyvalue" >
                     {{error | controlErrorMessage }}
                 </mat-error>
-
-
-                
     </mat-form-field>
-    <!-- FIN DE CAMPO DE NOMBRE -->
-    
-        <pre>{{nameControl.errors |keyvalue | json}}</pre>
-        
     </div>
-
     <div class="col-6  field">
         <mat-form-field class="w-full" appearance="outline">
             <mat-label>Apellido</mat-label>
@@ -31,6 +19,7 @@
             </mat-error>
         </mat-form-field>
     </div>
+
     <div class="col-6  field">
         <mat-form-field  class="w-full" appearance="outline">
             <mat-label>Email</mat-label>

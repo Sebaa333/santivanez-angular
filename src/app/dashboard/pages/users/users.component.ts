@@ -69,4 +69,35 @@ export class UsersComponent {
       })
 
 } 
+
+onDeleteUser(userToDelete:User):void{
+  if(confirm(`¿Estas seguro de eliminar a ${userToDelete.name}?`)){
+    this.users = this.users.filter((u)=> u.id !== userToDelete.id)
+    }
+  }
+
+  onEditUser(userToEdit:User):void{
+    this.matDialog
+      // abro el modal 
+      .open(UserFormDialogComponent,{
+        data: userToEdit
+      })
+      // y cuando cierra
+      .afterClosed()
+      // HAGA ESTO
+      .subscribe({
+        next: (userUpdated) =>{
+          console.log(userUpdated)
+          if(userUpdated){
+            this.users = this.users.map((user)=>{
+
+              return user.id === userToEdit.id
+              ?{...user, ...userUpdated }
+              : user
+              ;
+            }) 
+          }
+        }
+      })
+  }
 }
