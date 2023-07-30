@@ -10,8 +10,16 @@
 <p >
     <span appResaltado = "cyan">Esta es una prueba de la directiva custom</span> 
 </p>
+
+<h1>{{ loading  ? 'CARGANDO...': ''}}</h1>
+
+<div *ngIf="!loading">
+    {{ nombres }}
+    <br>
+    {{numeros}}
+</div>
     <app-users-table
-     [dataSource]="users"
+    [dataSource]="(users | async) || []"
     (deleteUser)="onDeleteUser($event)"
     (editUser)="onEditUser($event)"
     ></app-users-table>
