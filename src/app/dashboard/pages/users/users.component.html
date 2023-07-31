@@ -4,20 +4,19 @@
         Crear usuario
     </button> 
 </div>
-<h2 appResaltado = "cyan">Alumnos:</h2>
 
 
-<p >
-    <span appResaltado = "cyan">Esta es una prueba de la directiva custom</span> 
-</p>
+<h2 >
+    <span appResaltado = "cyan">Alumnos inscribidos:</span> 
+</h2>
 
-<h1>{{ loading  ? 'CARGANDO...': ''}}</h1>
+<!-- <h1>{{ loading  ? 'CARGANDO...': ''}}</h1> -->
 
-<div *ngIf="!loading">
+<!-- <div *ngIf="!loading">
     {{ nombres }}
     <br>
     {{numeros}}
-</div>
+</div> -->
     <app-users-table
     [dataSource]="(users | async) || []"
     (deleteUser)="onDeleteUser($event)"
