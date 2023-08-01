@@ -6,19 +6,20 @@ import { UserService } from './user.service';
 import { Observable, Subject, Subscription, delay, filter, forkJoin, map, of, takeUntil, tap } from 'rxjs';
 import { NotifierService } from 'src/app/core/services/notifier.service';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnDestroy {
-  public users: Observable <User[]>;
+  public users: Observable<User[]>;
+  public destroyed = new Subject<Boolean>()
 
   public semaforoSubscription?:Subscription
 
   public allSubs: Subscription []= []
 
-  public destroyed = new Subject<Boolean>()
 
   public loading = false
   public nombres:  string[] = []
@@ -211,11 +212,15 @@ export class UsersComponent implements OnDestroy {
 
 } 
 
-onDeleteUser(userToDelete:User):void{
-  if(confirm(`¿Estas seguro de eliminar a ${userToDelete.name}?`)){
-    // this.users = this.users.filter((u)=> u.id !== userToDelete.id)
-    }
+onDeleteUser(userToDelete: User): void {
+  if (confirm(`¿Estás seguro de eliminar a ${userToDelete.name}?`)) {
+    this.users.pipe(
+      map((users) => users.filter((u) => u.id !== userToDelete.id))
+    ).subscribe((filteredUsers) => {
+      this.users = of(filteredUsers);
+    });
   }
+}
 
   onEditUser(userToEdit:User):void{
     this.matDialog

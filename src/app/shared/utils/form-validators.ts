@@ -3,7 +3,6 @@ import { AbstractControl, FormControl,ValidatorFn,ValidationErrors } from '@angu
 
 
 export function noHomeroValidator(): ValidatorFn{
-    // abstrarc control es un formarray,control o group
     return(control: AbstractControl): ValidationErrors | null =>{
 
       if(control instanceof FormControl){
