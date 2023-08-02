@@ -27,12 +27,6 @@ import { RouterModule } from '@angular/router';
     UsersComponent
   ],
   providers:[
-  //   {
-  //     // cuando UserService sea proveido
-  //     provide: UserService,
-  //     // use esta clase useclass
-  //     useClass: UserMockService
-  // },
   {
     provide: 'IS_DEV',
     useValue: false,

@@ -9,14 +9,6 @@
 <h2 >
     <span appResaltado = "cyan">Alumnos inscribidos:</span> 
 </h2>
-
-<!-- <h1>{{ loading  ? 'CARGANDO...': ''}}</h1> -->
-
-<!-- <div *ngIf="!loading">
-    {{ nombres }}
-    <br>
-    {{numeros}}
-</div> -->
     <app-users-table
     [dataSource]="(users | async) || []"
     (deleteUser)="onDeleteUser($event)"

@@ -8,8 +8,8 @@ import { User } from '../../models';
   styleUrls: ['./user-form-dialog.component.scss']
 })
 export class UserFormDialogComponent {
-  editingUser?: User;
-      
+    
+    editingUser?: User;
     nameControl     =  new FormControl <string | null> (null,[ Validators.required,Validators.minLength(2),]);
     surnameControl  =  new FormControl <string | null> (null,[Validators.required]);
     emailControl    =  new FormControl <string | null> (null,[Validators.required]);
