@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MatCardModule } from '@angular/material/card';
 import { AuthModule } from './auth/auth.module';
+import { CoursesModule } from './dashboard/pages/courses/courses.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     DashboardModule,
     AuthModule,
-    MatCardModule
+    MatCardModule,
+    CoursesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

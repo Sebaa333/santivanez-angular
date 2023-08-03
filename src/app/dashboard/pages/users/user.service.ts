@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CreateUserData, UpdateUserData, User } from './models';
-import { BehaviorSubject, Observable, Subject, delay, of, take } from 'rxjs';
-import { NotifierService } from 'src/app/core/services/notifier.service';
+import { BehaviorSubject, Observable, Subject, delay, map, of, take } from 'rxjs';
 
 const USER_DB: Observable<User[]> = of([
-  {
-  id:1, 
-  name:'Seba',
-  surname:'santivanez',
-  email:'seba@mail.com',
-  password:'123456'
+  {id:1, 
+    name:'Seba',
+    surname:'santivanez',
+    email:'seba@mail.com',
+    password:'123456'
   },
-  { 
-    id:2, 
+  { id:2, 
     name:'Nico',
     surname:'Rodriguez',
     email:'seba@mail.com',
@@ -20,19 +17,13 @@ const USER_DB: Observable<User[]> = of([
   },
 ]).pipe(delay(1000))
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private subjetUsers$ = new Subject<User[]>();
-
   private sendNotification$ = new Subject<string>();
-
   private _users$ = new BehaviorSubject<User[]>([]);
   private users$ = this._users$.asObservable();
-
-
 
   constructor(  ) { 
     this.sendNotification$.subscribe({})
@@ -51,6 +42,13 @@ export class UserService {
   getUsers():Observable<User[]>{
     return this.users$
   }
+
+getUserById(id: number): Observable< User | undefined> {
+  return this.users$.pipe(
+    map(( users ) => users.find((u) => u.id === id) ),
+    take(1),
+    )
+}
 
   createUser(user: CreateUserData):void{
     this._users$.pipe(take(1)).subscribe({
@@ -72,7 +70,6 @@ export class UserService {
       }
     })
   }
-
 
   deleteUserById(id: number):void{
     this._users$.pipe(take(1)).subscribe({
