@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 
@@ -22,6 +23,7 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
   ],
   imports: [
     CommonModule,
+    DashboardRoutingModule, //modulo rutas
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
@@ -29,7 +31,7 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
     HomeModule,
     UsersModule,
     RouterModule,
-    MatListModule
+    MatListModule,
 
   ],
   exports: [
