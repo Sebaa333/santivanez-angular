@@ -4,7 +4,6 @@ import { UserFormDialogComponent } from './components/user-form-dialog/user-form
 import { User } from './models';
 import { UserService } from './user.service';
 import { Observable, Subject, Subscription, delay, filter, forkJoin, map, of, takeUntil, tap } from 'rxjs';
-import { NotifierService } from 'src/app/core/services/notifier.service';
 
 @Component({
   selector: 'app-users',
@@ -14,19 +13,13 @@ import { NotifierService } from 'src/app/core/services/notifier.service';
 
 export class UsersComponent implements OnDestroy {
   public users: Observable<User[]>;
+  public isLoading$: Observable<boolean >;
   public destroyed = new Subject<Boolean>()
   public loading = false
-  
+  constructor(private matDialog: MatDialog,private usersService: UserService,){
 
-  constructor(
-
-    private matDialog: MatDialog,
-    private usersService: UserService,
-    private notifier: NotifierService,
-
-    @Inject('IS_DEV') private isDev: boolean
-    ){
       this.usersService.loadUsers();
+      this.isLoading$ =this.usersService.isLoading$
       this.users = this.usersService.getUsers();
     };
     ngOnDestroy(): void {
@@ -52,7 +45,6 @@ export class UsersComponent implements OnDestroy {
           }
         }
       })
-
 } 
 
 onDeleteUser(userToDelete: User): void {

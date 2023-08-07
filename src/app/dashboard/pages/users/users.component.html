@@ -4,13 +4,19 @@
         Crear usuario
     </button> 
 </div>
-
-
 <h2 >
-    <span appResaltado = "cyan">Alumnos inscribidos:</span> 
+    <span appResaltado = "cyan">Alumnos inscriptos:</span> 
 </h2>
+
+<div *ngIf="isLoading$ | async; else notLoadingTemplate">Esta Cargando</div>
+
+<ng-template #notLoadingTemplate>
     <app-users-table
     [dataSource]="(users | async) || []"
     (deleteUser)="onDeleteUser($event)"
     (editUser)="onEditUser($event)"
     ></app-users-table>
+
+
+</ng-template>
+

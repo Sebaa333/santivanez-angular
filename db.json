@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "name": "Seba",
+      "surname": "Santiva",
+      "email": "seba@mail.com",
+      "password": "123456",
+      "id": 1
+    }
+  ],
+  "courses": []
+}
