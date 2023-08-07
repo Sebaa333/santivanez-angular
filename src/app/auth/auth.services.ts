@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, map, take } from "rxjs";
 import { User } from "../dashboard/pages/users/models";
 import { NotifierService } from "../core/services/notifier.service";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 
@@ -19,9 +19,19 @@ export class AuthService{
         private router: Router,){}
 
     isAuthenticated():Observable< boolean >{
-        return this.authUser$.pipe(
-            take(1),
-            map((user) => !!user ));
+        // return this.authUser$.pipe(
+        //     take(1),
+        //     map((user) => !!user ));
+
+        return this.httpClient.get<User[]>('http://localhost:3000/users',{
+            params:{
+                token: localStorage.getItem('token')|| '',
+            }
+        }).pipe(
+            map((usersResult) =>{
+                return !!usersResult.length
+            })
+        )
     }
 
     login(payload: LoginPayload): void{
@@ -33,11 +43,25 @@ export class AuthService{
         }).subscribe({
             next:(response) => {
                 if(response.length){
-                    this._authUser$.next(response[0]);
+                    const authUser = response[0]
+                    this._authUser$.next(authUser);
                     this.router.navigate(['/dashboard'])
+                    localStorage.setItem('token', authUser.token)
                 }else{
                     this.notifier.showCancel('Email o Contraseña invalida')
                     this._authUser$.next(null);
+                }
+            },
+            error:(err) =>{
+                if(err instanceof HttpErrorResponse){
+                    let message = 'Ocurrio un error Inesperado'
+                    if(err.status ===500){
+                    }
+                    if(err.status ===401){
+                        // this.notifier.showCancel('Email o Contraseña invalida')
+                        message ='Email o Contraseña invalida';
+                    }
+                    this.notifier.showCancel(message)
                 }
             }
         })

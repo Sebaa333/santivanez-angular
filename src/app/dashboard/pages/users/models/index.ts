@@ -4,6 +4,7 @@ export interface User{
     surname:string
     email:string
     password:string
+    token:string
 }
 
 export interface CreateUserData{
@@ -11,6 +12,7 @@ export interface CreateUserData{
     surname:string
     email:string
     password:string
+
 }
 
 export interface UpdateUserData{

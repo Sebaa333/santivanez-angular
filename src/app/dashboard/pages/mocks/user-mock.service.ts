@@ -7,7 +7,8 @@ export class UserMockService{
         name:'FAKE_NAME',
         surname:'FAKE_SURNAME',
         email:'FAKE@mail.com',
-        password:'123456'
+        password:'123456',
+        token:''
         }, 
       ];
     getUsers():User[]{

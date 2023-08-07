@@ -5,7 +5,16 @@
       "surname": "Santiva",
       "email": "seba@mail.com",
       "password": "123456",
+      "token": "OgXNTvwm9ZrvotDT3Ah9",
       "id": 1
+    },
+    {
+      "name": "tests",
+      "email": "tests@mail.com",
+      "password": "123456",
+      "surname": "tests",
+      "token": "oTXnTvwm9ZrvKtDT3Ah9",
+      "id": 2
     }
   ],
   "courses": []
