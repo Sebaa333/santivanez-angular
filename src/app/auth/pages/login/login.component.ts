@@ -8,7 +8,7 @@ import { AuthService } from '../../auth.services';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public emailControl = new FormControl('fakeemail@fake.com',[Validators.required, Validators.email]);
+  public emailControl = new FormControl('seba@mail.com',[Validators.required, Validators.email]);
   public passwordControl = new FormControl('123456',[Validators.required]);
 
 
