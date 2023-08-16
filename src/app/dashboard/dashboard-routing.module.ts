@@ -23,6 +23,11 @@ import { HomeComponent } from "./pages/home/home.component";
             loadChildren: () => import('./pages/categories/categories.module').then((m) => m.CategoriesModule)
             },
             {
+            path:'counter',
+            loadChildren: () => import('./pages/counter/counter.module').then((m) => m.CounterModule)
+            },
+            
+            {
             path: '**',
             redirectTo: 'home'
             },

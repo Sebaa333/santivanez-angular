@@ -6,30 +6,35 @@ import { NotifierService } from "../core/services/notifier.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { Store } from "@ngrx/store";
+import { AuthActions } from "../store/auth/auth.action";
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthService{
 
-    private _authUser$ = new BehaviorSubject<User | null>(null);
-    public authUser$ = this._authUser$.asObservable();
+    // private _authUser$ = new BehaviorSubject<User | null>(null);
+    // public authUser$ = this._authUser$.asObservable();
 
     constructor(
         private notifier: NotifierService,
         private httpClient:HttpClient,
-        private router: Router,){}
-
+        private store: Store,
+        private router: Router,
+        ){}
+        
     isAuthenticated():Observable< boolean >{
-        // return this.authUser$.pipe(
-        //     take(1),
-        //     map((user) => !!user ));
-
         return this.httpClient.get<User[]>(environment.baseApiUrl + '/users',{
             params:{
                 token: localStorage.getItem('token')|| '',
             }
         }).pipe(
             map((usersResult) =>{
+                if(usersResult.length){
+                    const authUser = usersResult[0]
+                    this.store.dispatch(AuthActions.setAuthUser({payload :authUser}))
+
+                }
                 return !!usersResult.length
             })
         )
@@ -45,12 +50,13 @@ export class AuthService{
             next:(response) => {
                 if(response.length){
                     const authUser = response[0]
-                    this._authUser$.next(authUser);
+                    this.store.dispatch(AuthActions.setAuthUser({payload :authUser}))
                     this.router.navigate(['/dashboard'])
                     localStorage.setItem('token', authUser.token)
                 }else{
                     this.notifier.showCancel('Email o Contraseña invalida')
-                    this._authUser$.next(null);
+                    // this._authUser$.next(null);
+                    this.store.dispatch(AuthActions.setAuthUser({payload :null}))
                 }
             },
             error:(err) =>{
@@ -59,12 +65,14 @@ export class AuthService{
                     if(err.status ===500){
                     }
                     if(err.status ===401){
-                        // this.notifier.showCancel('Email o Contraseña invalida')
                         message ='Email o Contraseña invalida';
                     }
                     this.notifier.showCancel(message)
                 }
             }
         })
+    }
+    public logout():void{
+        this.store.dispatch(AuthActions.setAuthUser({payload:null}))
     }
 }
