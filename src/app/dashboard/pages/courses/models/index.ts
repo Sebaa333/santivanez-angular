@@ -3,4 +3,5 @@ export interface Course{
     name: string
     descripcion: string
     price: number
+    categoryId: number
 }
