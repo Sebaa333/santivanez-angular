@@ -1,10 +1,9 @@
 <mat-nav-list>
     <!-- /dashboard .... /dasboard/home -->
     <a routerLink="home" mat-list-item>Inicio</a>
-    <a routerLink="users" mat-list-item>Usuarios</a>
+    <a *ngIf="selectIsAdmin$ |async"  routerLink="users" mat-list-item>Usuarios</a>
     <a routerLink="courses" mat-list-item>Cursos</a>
     <a routerLink="counter" mat-list-item>Contador</a>
     <a routerLink="categories" mat-list-item>Categorias</a>
-    <!-- /dasboard/auth -->
     <a (click)="logout()" mat-list-item>Cerrar Sesion</a>
 </mat-nav-list>

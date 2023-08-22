@@ -39,7 +39,8 @@ export class UsersComponent implements OnDestroy {
                 name: v.name,
                 email: v.email,
                 password: v.password,
-                surname: v.surname
+                surname: v.surname,
+                role: v.role
               }
             )
           }

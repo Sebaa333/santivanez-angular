@@ -12,6 +12,8 @@ import { FullNamePipe } from './pipes/full-name.pipe';
 import { ControlErrorMessagePipe } from './pipes/control-error-message.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { RepetirDirective } from './directives/repetir.directive';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -38,6 +40,7 @@ import { RepetirDirective } from './directives/repetir.directive';
     FullNamePipe,
     ControlErrorMessagePipe,
     ResaltadoDirective,
+    MatSelectModule,
     RepetirDirective,
   ]
 })

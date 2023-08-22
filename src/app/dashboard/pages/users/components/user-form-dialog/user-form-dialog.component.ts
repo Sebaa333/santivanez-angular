@@ -15,11 +15,14 @@ export class UserFormDialogComponent {
     emailControl    =  new FormControl <string | null> (null,[Validators.required]);
     passwordControl =  new FormControl <string | null> (null,[Validators.required]);
     
+    roleControl = new FormControl<string | null>(null,[Validators.required])
+
     userForm= new FormGroup({
       name: this.nameControl,
       surname: this.surnameControl,
       email: this.emailControl,
       password: this.passwordControl,
+      role: this.roleControl,
     })  
 
     
@@ -35,13 +38,20 @@ export class UserFormDialogComponent {
                 this.surnameControl.setValue(this.data.surname);
                 this.passwordControl.setValue(this.data.password);
                 this.emailControl.setValue(this.data.email);
+                this.roleControl.setValue(this.data.role)
               }
       }
     onSubmit(): void{
       if(this.userForm.invalid){
         this.userForm.markAllAsTouched
       }else{
-        this.dialogRef.close(this.userForm.value);
+        const  payload: any ={
+          ...this.userForm.value
+        }
+        if(this.editingUser){
+          payload['token'] = this.editingUser.token
+        }
+        this.dialogRef.close(payload);
       }
     }
 }
