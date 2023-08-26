@@ -42,21 +42,21 @@
       "categoryId": 1
     },
     {
-      "id": 4,
+      "id": 1,
       "name": "PHP",
       "descripcion": "Curso de coder",
       "price": 1000,
       "categoryId": 2
     },
     {
-      "id": 5,
+      "id": 2,
       "name": "SQL",
       "descripcion": "Curso de coder",
       "price": 1500,
       "categoryId": 2
     },
     {
-      "id": 6,
+      "id": 3,
       "name": "EXPRESS",
       "descripcion": "Curso de coder",
       "price": 2000,
@@ -91,45 +91,12 @@
     {
       "id": 3,
       "courseId": 1,
-      "buyerId": 1
+      "buyerId": 50
     },
     {
       "id": 4,
       "courseId": 2,
       "buyerId": 2
-    },
-    {
-      "id": 5,
-      "courseId": 1,
-      "buyerId": 1
-    },
-    {
-      "id": 6,
-      "courseId": 1,
-      "buyerId": 1
-    },
-    {
-      "id": 7,
-      "courseId": 1,
-      "buyerId": 1
-    },
-    {
-      "id": 8,
-      "courseId": 1,
-      "buyerId": 1
-    },
-    {
-      "id": 9,
-      "courseId": 1,
-      "buyerId": 1
-    },
-    {
-      "id": 10,
-      "courseId": 2,
-      "buyerId": 1
-    },
-    {
-      "id": 11
     }
-  ]
+  ]  
 }

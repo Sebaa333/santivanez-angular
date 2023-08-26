@@ -21,6 +21,16 @@ import { adminGuard } from "../core/guards/admin.guard";
             loadChildren:() => import('./pages/courses/courses.module').then((m)=> m.CoursesModule)
             },
             {
+            path: 'buyers',
+            loadChildren: () =>
+                import('./pages/buyers/buyers.module').then((m) => m.BuyersModule),
+            },
+            {
+            path: 'sales',
+            loadChildren: () =>
+                import('./pages/sales/sales.module').then((m) => m.SalesModule),
+              },
+            {
             path:'categories',
             loadChildren: () => import('./pages/categories/categories.module').then((m) => m.CategoriesModule)
             },
