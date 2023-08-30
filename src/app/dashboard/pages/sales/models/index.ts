@@ -3,16 +3,16 @@ import { Course } from '../../courses/models';
 
 export interface Sale {
   id: number;
-  coursesId: number;
+  courseId: number;
   buyerId: number;
 }
 
 export interface SaleWithCourseAndBuyer extends Sale {
-  courses: Course;
+  course: Course;
   buyer: Buyer;
 }
 
 export interface CreateSalePayload {
-  coursesId: number | null;
+  courseId: number | null;
   buyerId: number | null;
 }

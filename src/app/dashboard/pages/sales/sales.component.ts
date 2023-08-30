@@ -13,11 +13,11 @@ import { SaleDialogComponent } from './components/sale-dialog/sale-dialog.compon
   styles: [],
 })
 export class SalesComponent implements OnInit {
-  displayedColumns = ['id', 'courses', 'buyer', 'total'];
+  displayedColumns = ['id', 'course', 'buyer', 'total'];
   sales$: Observable<SaleWithCourseAndBuyer[]>;
 
   constructor(private store: Store, private matDialog: MatDialog) {
-    this.sales$ = this.store.select(selectSales);
+    this.sales$ = this.store.select(selectSales)
   }
 
   onAdd(): void {
@@ -25,12 +25,6 @@ export class SalesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Dispatch the action to load sales data when the component initializes
-    this.store.dispatch(SaleActions.loadSales());
-
-    // You can also dispatch actions to load buyer and course options if needed
-    // this.store.dispatch(SaleActions.loadBuyerOptions());
-    // this.store.dispatch(SaleActions.loadCourseOptions());
+    this.store.dispatch(SaleActions.loadSales())
   }
 }
-

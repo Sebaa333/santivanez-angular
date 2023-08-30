@@ -39,7 +39,7 @@ export const reducer = createReducer(
     return {
       ...state,
       data: action.data,
-      loading: true
+      loading: false
     }
   }),
 
@@ -63,12 +63,12 @@ export const reducer = createReducer(
     }
   }),
 
-  
+  // load product options
   on(SaleActions.loadCourseOptions, (state) => state),
   on(SaleActions.loadCourseOptionsSuccess, (state, action) => {
     return {
       ...state,
-      courseOptions: action.data,
+      productOptions: action.data,
     }
   })
 

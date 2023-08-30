@@ -112,7 +112,7 @@ export class SaleEffects {
   constructor(private actions$: Actions, private httpClient: HttpClient, private store: Store) {}
 
   private getSalesFromDB(): Observable<SaleWithCourseAndBuyer[]> {
-    return this.httpClient.get<SaleWithCourseAndBuyer[]>(environment.baseApiUrl + '/sales?_expand=course&_expand=buyers')
+    return this.httpClient.get<SaleWithCourseAndBuyer[]>(environment.baseApiUrl + '/sales?_expand=course&_expand=buyer')
   }
 
   private getBuyerOptions(): Observable<Buyer[]> {

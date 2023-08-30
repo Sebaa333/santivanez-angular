@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class BuyerService {
   private _buyers$ = new BehaviorSubject<Buyer[]>([]);
-  private readonly baseUrl = environment.baseApiUrl + '/buyer';
+  private readonly baseUrl = environment.baseApiUrl + '/buyers';
   public buyers$ = this._buyers$.asObservable();
 
   constructor(private httpClient: HttpClient) {}

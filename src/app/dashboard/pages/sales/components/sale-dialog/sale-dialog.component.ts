@@ -16,11 +16,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class SaleDialogComponent implements OnInit {
 
-  coursesIdControl = new FormControl(null, Validators.required);
+  courseIdControl = new FormControl(null, Validators.required);
   buyerIdControl = new FormControl(null, Validators.required);
 
   saleForm = new FormGroup({
-    coursesId: this.coursesIdControl,
+    courseId: this.courseIdControl,
     buyerId: this.buyerIdControl,
   });
 
