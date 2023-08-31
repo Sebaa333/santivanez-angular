@@ -12,10 +12,6 @@ import { AuthActions } from "../store/auth/auth.action";
 @Injectable({ providedIn: 'root' })
 
 export class AuthService{
-
-    // private _authUser$ = new BehaviorSubject<User | null>(null);
-    // public authUser$ = this._authUser$.asObservable();
-
     constructor(
         private notifier: NotifierService,
         private httpClient:HttpClient,
@@ -55,7 +51,6 @@ export class AuthService{
                     localStorage.setItem('token', authUser.token)
                 }else{
                     this.notifier.showCancel('Email o Contraseña invalida')
-                    // this._authUser$.next(null);
                     this.store.dispatch(AuthActions.setAuthUser({payload :null}))
                 }
             },

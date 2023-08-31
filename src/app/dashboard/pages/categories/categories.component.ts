@@ -17,7 +17,6 @@ export class CategoriesComponent  implements OnInit{
 
   constructor(private store:Store){
    this.categories$= this.store.select(selectCategoriesArray);
-    // this.categories$ = this.store.select()
   }
   
   displayedColumns =['id','name','actions',]

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserFormDialogComponent } from './components/user-form-dialog/user-form-dialog.component';
 import { User } from './models';
 import { UserService } from './user.service';
-import { Observable, Subject, Subscription, delay, filter, forkJoin, map, of, takeUntil, tap } from 'rxjs';
+import { Observable, Subject,  } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -34,7 +34,6 @@ export class UsersComponent implements OnDestroy {
       .subscribe({
         next: (v) =>{
           if(v){
-            // this.notifier.showSuccess('Se cargaron los usuarios correctamente')
             this.usersService.createUser({
                 name: v.name,
                 email: v.email,
@@ -55,13 +54,10 @@ onDeleteUser(userToDelete: User): void {
 }
   onEditUser(userToEdit:User):void{
     this.matDialog
-      // abro el modal 
       .open(UserFormDialogComponent,{
         data: userToEdit
       })
-      // y cuando cierra
       .afterClosed()
-      // HAGA ESTO
       .subscribe({
         next: (userUpdated) =>{
           if(userUpdated){

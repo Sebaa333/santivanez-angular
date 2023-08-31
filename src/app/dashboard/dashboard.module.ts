@@ -23,7 +23,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule, //modulo rutas
+    DashboardRoutingModule,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,

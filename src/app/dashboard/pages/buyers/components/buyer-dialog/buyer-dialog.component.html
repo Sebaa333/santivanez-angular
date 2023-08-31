@@ -7,19 +7,16 @@
 </h1>
 <div mat-dialog-content>
   <form [formGroup]="buyerForm" class="grid">
-    <!-- CAMPO DE NOMBRE -->
     <div class="col-6 field">
       <mat-form-field class="w-full" appearance="outline">
         <mat-label>Nombre</mat-label>
         <input formControlName="name" matInput type="text" name="name" />
-        <!-- ERRORES -->
         <mat-error *ngFor="let error of nameControl.errors | keyvalue">
           {{ error | controlErrorMessage }}
         </mat-error>
       </mat-form-field>
     </div>
-    <!-- CAMPO DE NOMBRE -->
-
+    
     <div class="col-6 field">
       <mat-form-field class="w-full" appearance="outline">
         <mat-label>Apellido</mat-label>

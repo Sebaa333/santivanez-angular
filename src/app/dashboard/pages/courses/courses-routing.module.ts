@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoursesComponent } from './courses.component';
 
 const routes: Routes = [
-  { //dashboard/courses
+  { 
     path:'',
     component: CoursesComponent
   },

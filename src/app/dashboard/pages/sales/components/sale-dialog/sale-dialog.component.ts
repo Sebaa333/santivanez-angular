@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { SaleActions } from '../../store/sale.actions';
 import { Buyer } from '../../../buyers/models';
-import { selectBuyerOptions, selectCourseOptions } from '../../store/sale.selectors';
+import { selectBuyerOptions, selectCourseOptions,} from '../../store/sale.selectors';
 import { Observable } from 'rxjs';
 import { Course } from '../../../courses/models';
 import { MatDialogRef } from '@angular/material/dialog';

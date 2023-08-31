@@ -15,10 +15,10 @@ export class BuyerService {
   loadBuyers(): void {
     this.httpClient.get<Buyer[]>(this.baseUrl).subscribe({
       next: (buyers) => {
-        this._buyers$.next(buyers); // EMITIR LOS DATOS AL BEHAVIOR SUBJECT
+        this._buyers$.next(buyers); 
       },
       error: () => {
-        // MANEJAR ERROR AL CARGAR LOS COMPRADORES
+       
       },
     });
   }
@@ -26,11 +26,10 @@ export class BuyerService {
   createBuyer(payload: CreateBuyerPayload, afterCreate?: () => void): void {
     this.httpClient.post<Buyer>(this.baseUrl, payload).subscribe({
       next: () => {
-        this.loadBuyers(); // RECARGAR EL LISTADO DESPUES DE CREAR UNO NUEVO
+        this.loadBuyers(); 
         if (afterCreate) afterCreate();
       },
       error: () => {
-        // MANEJAR ERROR AL CARGAR LOS COMPRADORES
       },
     });
   }
@@ -38,10 +37,9 @@ export class BuyerService {
   deleteBuyerById(id: number): void {
     this.httpClient.delete(this.baseUrl + '/' + id).subscribe({
       next: () => {
-        this.loadBuyers(); // RECARGAR EL LISTADO DESPUES DE ELIMINAR UNO
+        this.loadBuyers(); 
       },
       error: () => {
-        // MANEJAR ERROR AL CARGAR LOS COMPRADORES
       },
     });
   }

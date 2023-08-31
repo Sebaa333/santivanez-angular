@@ -6,7 +6,7 @@ import { adminGuard } from "../core/guards/admin.guard";
 @NgModule({
     imports:[
         RouterModule.forChild(
-        [ //dashboard/home
+        [
             {
             path:'home',
             component: HomeComponent
@@ -34,11 +34,6 @@ import { adminGuard } from "../core/guards/admin.guard";
             path:'categories',
             loadChildren: () => import('./pages/categories/categories.module').then((m) => m.CategoriesModule)
             },
-            {
-            path:'counter',
-            loadChildren: () => import('./pages/counter/counter.module').then((m) => m.CounterModule)
-            },
-            
             {
             path: '**',
             redirectTo: 'home'
